@@ -1,6 +1,6 @@
 import LoginAndRegisterBtn from "./LoginAndRegisterBtn";
 import UserInfoAndLogout from "./UserInfoAndLogout";
-import {useUser} from "../../Context/UserContext";
+import {useUser} from "../../context/UserContext";
 
 
 const UserSection = () => {

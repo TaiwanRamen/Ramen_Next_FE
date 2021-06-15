@@ -12,7 +12,7 @@ import Box from "@material-ui/core/Box";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import StyledMenu from "../StyledMenu/StyledMenu";
 import {makeStyles} from "@material-ui/core/styles";
-import {useUser} from "../../Context/UserContext";
+import {useUser} from "../../context/UserContext";
 import { useRouter } from 'next/router'
 import {destroyCookie} from 'nookies'
 import {Divider} from "@material-ui/core";

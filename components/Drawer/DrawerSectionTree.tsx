@@ -12,7 +12,7 @@ import {faMapMarkedAlt, faStoreAlt, faStreetView, faUser} from "@fortawesome/fre
 // import InfoIcon from '@material-ui/icons/Info';
 // import SettingsIcon from "@material-ui/icons/Settings";
 import Divider from "@material-ui/core/Divider";
-import {useUser} from "../../Context/UserContext";
+import {useUser} from "../../context/UserContext";
 import StyledTreeItemHead from "../StyledTree/StyledTreeItemHead";
 import StyledTreeItem from "../StyledTree/StyledTreeItem";
 import {Box} from "@material-ui/core";

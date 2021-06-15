@@ -34,13 +34,9 @@ const Login = (props: Props) => {
     const loginToOurServer = async (response) => {
         try {
             let payload = {"access_token": response.accessToken};
-            let options = {
-                method: 'post',
-                url: url,
-                data: payload,
-                config: {headers: {'Content-Type': 'application/json'}}
-            };
-            let serverRes = await axios(options);
+
+            let serverRes = await axios.post(url, payload, {headers: {'Content-Type': 'application/json'}});
+
             let loginUser = serverRes.data.data.user;
             setUser(loginUser);
             const cookies = parseCookies()

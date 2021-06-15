@@ -13,7 +13,7 @@ import UserSection from "./UserSection";
 import '../../styles/RamenNav.module.css'
 import {useNotification} from "../../context/NotificationContext";
 import Badge from "@material-ui/core/Badge";
-import {useUser} from "../../Context/UserContext";
+import {useUser} from "../../context/UserContext";
 import SubCategorySection from "./SubCategorySection";
 import {useRouter} from "next/router";
 
@@ -69,9 +69,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     }),
 );
 
-const RamenNavbar = () => {
+export default function RamenNavbar({localUser}) {
     const classes = useStyles();
-    const {user, setUser} = useUser()!;
+    const {user, setUser} = useUser();
     const {notificationCount, setNotificationCount} = useNotification()!;
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [listening, setListening] = useState(false);
@@ -80,13 +80,13 @@ const RamenNavbar = () => {
         setDrawerOpen(!drawerOpen)
     }
 
-    useEffect(() => {
+    useEffect(()=>{
         const localUserString = window.localStorage.getItem("current_user");
         if (localUserString != null && localUserString !== "null" && localUserString !== "undefined") {
-            const localUser = JSON.parse(localUserString);
-            setUser(localUser);
+            localUser = JSON.parse(localUserString);
+            setUser(localUser)
         }
-    }, [])
+    },[])
 
     useEffect(() => {
         if (user && !listening) {
@@ -137,7 +137,6 @@ const RamenNavbar = () => {
                     </Hidden>
 
                     <div className={classes.grow}/>
-
                     <UserSection/>
 
                 </Toolbar>
@@ -147,4 +146,3 @@ const RamenNavbar = () => {
         </div>
     );
 }
-export default RamenNavbar;
