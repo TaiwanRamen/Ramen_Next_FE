@@ -7,15 +7,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import clsx from "clsx";
 import SideDrawer from "../Drawer/SideDrawer";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import {Link as RouterLink} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import {Backdrop, Hidden} from "@material-ui/core";
+import {Backdrop, Box, Hidden} from "@material-ui/core";
 import UserSection from "./UserSection";
-import './RamenNav.css';
-import {useNotification} from "../../Context/NotificationContext";
+import '../../styles/RamenNav.module.css'
+import {useNotification} from "../../context/NotificationContext";
 import Badge from "@material-ui/core/Badge";
 import {useUser} from "../../Context/UserContext";
 import SubCategorySection from "./SubCategorySection";
+import {useRouter} from "next/router";
+
 
 const navbarHeight = 64;
 const useStyles = makeStyles((theme: Theme) => ({
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             marginRight: theme.spacing(0),
         },
         grow: {
-            flexGrow: 1,
+            flexGrow: 2,
         },
         title: {
             fontFamily: "JFOpen",
@@ -56,11 +57,14 @@ const useStyles = makeStyles((theme: Theme) => ({
         },
         backdrop: {
             zIndex: 700,
-            color: '#fff',
+            color: '#ffffff',
         },
         divider: {
             height: 28,
             margin: 8,
+        },
+        toolbar: {
+            backgroundColor:"#f5f5f5"
         }
     }),
 );
@@ -71,7 +75,7 @@ const RamenNavbar = () => {
     const {notificationCount, setNotificationCount} = useNotification()!;
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [listening, setListening] = useState(false);
-
+    const router = useRouter();
     const toggleDrawerOpen = () => {
         setDrawerOpen(!drawerOpen)
     }
@@ -86,7 +90,7 @@ const RamenNavbar = () => {
 
     useEffect(() => {
         if (user && !listening) {
-            const url = process.env.REACT_APP_BE_URL + "/api/v1/user/unReadNotiCount";
+            const url = process.env.NEXT_PUBLIC_BE_URL + "/api/v1/user/unReadNotiCount";
 
             const eventSource = new EventSource(url, {withCredentials: true});
             eventSource.onopen = function () {
@@ -111,7 +115,8 @@ const RamenNavbar = () => {
                     [classes.appBarShift]: drawerOpen,
                 })}
             >
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
+
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -124,9 +129,9 @@ const RamenNavbar = () => {
                         </Badge>
                     </IconButton>
                     <Hidden smDown>
-                        <Button size="large" component={RouterLink} className={classes.title} to="/">
-                            <img src="/images/ramen.png" alt="" width="32px" height="32px" className="mx-2"/>
-                            台灣拉麵倶樂部
+                        <Button size="large" className={classes.title} onClick={() => router.push('/')}>
+                            <img src="/ramen.png" alt="" width="32px" height="32px" className="mx-2"/>
+                            <span>台灣拉麵倶樂部</span>
                         </Button>
                         <SubCategorySection/>
                     </Hidden>
@@ -137,7 +142,6 @@ const RamenNavbar = () => {
 
                 </Toolbar>
             </AppBar>
-
             <SideDrawer isOpen={drawerOpen} toggleDrawerOpen={toggleDrawerOpen} navbarHeight={navbarHeight}/>
             <Backdrop className={classes.backdrop} open={drawerOpen} onClick={toggleDrawerOpen}/>
         </div>

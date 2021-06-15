@@ -1,11 +1,11 @@
 import React from 'react';
-import './Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
+import styles from '../../styles/Footer.module.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons"
 
 const Footer = () => {
     return (
-        <div className="footer-bg">
+        <div className={styles.footerBg}>
             <div className="footer">
                 <div className="row">
                     <div className="col-lg-4 col-xs-12 about">
@@ -17,13 +17,13 @@ const Footer = () => {
                         <h4 className="mt-lg-0 mt-sm-4">加入我們</h4>
                         <p className="pt-2">
                             <a href="https://www.facebook.com/groups/RamenTW">
-                                <FontAwesomeIcon icon={faFacebookSquare} />
+                                <FontAwesomeIcon icon={faFacebookSquare} className="labelIcon"/>
                                 <span className="ml-2">台灣拉麵愛好會(台湾ラーメン愛好会/Taiwan Ramen Club)</span>
                             </a>
                         </p>
                         <p>
                             <a href="https://www.facebook.com/TWRamen">
-                                <FontAwesomeIcon icon={faFacebookSquare} />
+                                <FontAwesomeIcon icon={faFacebookSquare} className="labelIcon"/>
                                 <span className="ml-2">台灣拉麵愛好會</span>
 
                             </a>

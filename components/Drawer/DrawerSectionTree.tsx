@@ -7,11 +7,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 // import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import CommentIcon from "@material-ui/icons/Comment";
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import {useNotification} from "../../Context/NotificationContext";
+import {useNotification} from "../../context/NotificationContext";
 import {faMapMarkedAlt, faStoreAlt, faStreetView, faUser} from "@fortawesome/free-solid-svg-icons";
-import TaiwanIcon from "../../static/taiwan.svg";
-import TaipeiMetroIcon from "../../static/taipei_metro_logo_gray.svg";
-import KaohsiungMetroIcon from "../../static/kaohsiung_metro_logo_gray.svg";
 // import InfoIcon from '@material-ui/icons/Info';
 // import SettingsIcon from "@material-ui/icons/Settings";
 import Divider from "@material-ui/core/Divider";
@@ -52,7 +49,7 @@ export default function CustomTreeView(props: Props) {
                 <StyledTreeItem
                     nodeId="0"
                     labelText="附近店家"
-                    to="/storesAround"
+                    href="/storesAround"
                     labelIconFA={faStreetView}
                     onClick={toggleDrawerOpen}
                 />
@@ -60,7 +57,7 @@ export default function CustomTreeView(props: Props) {
                 <StyledTreeItem
                     nodeId="1"
                     labelText="店家列表"
-                    to="/stores"
+                    href="/stores"
                     labelIconFA={faStoreAlt}
                     onClick={toggleDrawerOpen}
                 />
@@ -74,22 +71,22 @@ export default function CustomTreeView(props: Props) {
                     <StyledTreeItem
                         nodeId="11"
                         labelText="臺灣地圖"
-                        to="/map"
-                        labelIconSVG={TaiwanIcon}
+                        href="/map"
+                        labelIconSVG={"/taiwan.svg"}
                         onClick={toggleDrawerOpen}
                     />
                     <StyledTreeItem
                         nodeId="12"
                         labelText="臺北捷運地圖"
-                        labelIconSVG={TaipeiMetroIcon}
-                        to="/map/TaipeiMetro"
+                        labelIconSVG={"/taipei_metro_logo_gray.svg"}
+                        href="/map/TaipeiMetro"
                         onClick={toggleDrawerOpen}
                     />
                     <StyledTreeItem
                         nodeId="13"
                         labelText="高雄捷運地圖"
-                        labelIconSVG={KaohsiungMetroIcon}
-                        to="/map/KaohsiungMetro"
+                        labelIconSVG={"/kaohsiung_metro_logo_gray.svg"}
+                        href="/map/KaohsiungMetro"
                         onClick={toggleDrawerOpen}
                     />
                 </StyledTreeItemHead>
@@ -106,7 +103,7 @@ export default function CustomTreeView(props: Props) {
                         {/*    nodeId="21"*/}
                         {/*    labelText="個人資料"*/}
                         {/*    labelIcon={InfoIcon}*/}
-                        {/*    to="/userInfo"*/}
+                        {/*    href="/userInfo"*/}
                         {/*    onClick={toggleDrawerOpen}*/}
 
                         {/*/>*/}
@@ -119,34 +116,34 @@ export default function CustomTreeView(props: Props) {
                                 setNotificationCount(0);
                                 toggleDrawerOpen()
                             }}
-                            to="/notification"
+                            href="/notification"
                         />
                         <StyledTreeItem
                             nodeId="23"
                             labelText="追蹤清單"
                             labelIcon={BookmarkIcon}
-                            to="/following"
+                            href="/following"
                             onClick={toggleDrawerOpen}
                         />
                         {/*<StyledTreeItem*/}
                         {/*    nodeId="24"*/}
                         {/*    labelText="願望清單"*/}
                         {/*    labelIcon={PlaylistAddIcon}*/}
-                        {/*    to="/wishlist"*/}
+                        {/*    href="/wishlist"*/}
                         {/*    onClick={toggleDrawerOpen}*/}
                         {/*/>*/}
                         <StyledTreeItem
                             nodeId="25"
                             labelText="已評論店家"
                             labelIcon={CommentIcon}
-                            to="/reviewed"
+                            href="/reviewed"
                             onClick={toggleDrawerOpen}
                         />
                         {/*<StyledTreeItem*/}
                         {/*    nodeId="26"*/}
                         {/*    labelText="用戶設定"*/}
                         {/*    labelIcon={SettingsIcon}*/}
-                        {/*    to="/setting"*/}
+                        {/*    href="/setting"*/}
                         {/*    onClick={toggleDrawerOpen}*/}
                         {/*/>*/}
                     </StyledTreeItemHead>

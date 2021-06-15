@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react'
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -13,8 +13,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import StyledMenu from "../StyledMenu/StyledMenu";
 import {makeStyles} from "@material-ui/core/styles";
 import {useUser} from "../../Context/UserContext";
-import {useHistory} from "react-router-dom";
-import Cookies from "js-cookie";
+import { useRouter } from 'next/router'
+import {destroyCookie} from 'nookies'
 import {Divider} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
 );
 const UserInfoAndLogout = () => {
     const classes = useStyles();
-    const history = useHistory();
+    const router = useRouter();
     const {user, setUser} = useUser()!;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -47,9 +47,9 @@ const UserInfoAndLogout = () => {
 
     const handleLogout = async () => {
         setUser(null);
-        await Cookies.remove('access_token', {path: '', domain: process.env.REACT_APP_DOMAIN});
+        await destroyCookie(null, 'access_token',{path: '', domain: process.env.NEXT_PUBLIC_APP_DOMAIN})
         window.localStorage.removeItem("current_user");
-        history.push("/");
+        await router.push("/");
     }
 
     return (

@@ -1,11 +1,30 @@
+@font-face {
+  font-family: CPFont;
+  src: url("/CPFont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: JFOpen;
+  src: url("/JFOpen.ttf") format("truetype");
+}
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  background: #faf8f8;
 }
-
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1440px;
+  width: 90%;
+  padding: 0 15px;
+  margin: 100px auto 0 auto;
+}
 a {
   color: inherit;
   text-decoration: none;

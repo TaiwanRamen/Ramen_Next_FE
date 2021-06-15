@@ -1,12 +1,12 @@
 import {makeStyles, Theme} from "@material-ui/core/styles";
 import TreeItem, {TreeItemProps} from "@material-ui/lab/TreeItem";
-import React from "react";
 import {SvgIconProps} from "@material-ui/core/SvgIcon";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
-import {Link as RouterLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
+import {ElementType} from "react";
+import Button from "@material-ui/core/Button";
 
 const useTreeItemStyles = makeStyles((theme: Theme) => ({
         root: {
@@ -52,7 +52,7 @@ const useTreeItemStyles = makeStyles((theme: Theme) => ({
             }
         },
         labelRoot: {
-            margin: "5px 0",
+            margin: "5px ",
             display: 'flex',
             alignItems: 'center',
             color: theme.palette.text.secondary,
@@ -75,39 +75,40 @@ const useTreeItemStyles = makeStyles((theme: Theme) => ({
     }),
 );
 
-
 type StyledTreeItemProps = TreeItemProps & {
-    labelIcon?: React.ElementType<SvgIconProps> | string;
+    labelIcon?: ElementType<SvgIconProps> | string;
     labelIconFA?: IconProp;
     labelIconSVG?: string;
     labelInfo?: string | number | null;
     labelText: string;
     avatar?: string;
-    to: string;
+    href: string;
 };
 
 function StyledTreeItem(props: StyledTreeItemProps) {
     const classes = useTreeItemStyles();
-    const {labelIconSVG, labelIconFA, labelText, labelIcon: LabelIcon, labelInfo, to, ...other} = props;
+    const {labelIconSVG, labelIconFA, labelText, labelIcon: LabelIcon, labelInfo, href, ...other} = props;
 
     return (
         <TreeItem
             label={
-                <RouterLink className={classes.labelRoot} to={to}>
-                    {LabelIcon && <LabelIcon color="inherit" className={classes.labelIcon}/>}
-                    {labelIconFA && <FontAwesomeIcon icon={labelIconFA} color="inherit" className={classes.labelIcon}/>}
-                    {labelIconSVG && <img className={classes.labelIcon} src={labelIconSVG} alt="alt"/>}
-                    <Typography className={classes.labelText}>
-                        {labelText}
-                    </Typography>
-                    {!!labelInfo && labelInfo !== 0 && <Chip
-                        variant="outlined"
-                        size="small"
-                        clickable
-                        label={labelInfo}
-                        color="secondary"
-                    />}
-                </RouterLink>
+                <Button className={classes.labelRoot} href={href}>
+                    <>
+                        {LabelIcon && <LabelIcon color="inherit" className={classes.labelIcon}/>}
+                        {labelIconFA && <FontAwesomeIcon icon={labelIconFA} color="inherit" className={classes.labelIcon}/>}
+                        {labelIconSVG && <img className={classes.labelIcon} src={labelIconSVG} alt="alt"/>}
+                        <Typography className={classes.labelText} component={"span"}>
+                            {labelText}
+                        </Typography>
+                        {!!labelInfo && labelInfo !== 0 && <Chip
+                            variant="outlined"
+                            size="small"
+                            clickable
+                            label={labelInfo}
+                            color="secondary"
+                        />}
+                    </>
+                </Button>
             }
             classes={{
                 root: classes.root,

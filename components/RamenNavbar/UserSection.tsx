@@ -6,10 +6,9 @@ import {useUser} from "../../Context/UserContext";
 const UserSection = () => {
     const { user } = useUser()! ;
     return (
-        <>
-            { !user && <LoginAndRegisterBtn/>}
-            { user && <UserInfoAndLogout />}
-        </>
+        <div>
+            { user ? <UserInfoAndLogout />: <LoginAndRegisterBtn/>}
+        </div>
     );
 }
 

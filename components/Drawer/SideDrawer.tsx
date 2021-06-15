@@ -3,8 +3,6 @@ import Drawer from '@material-ui/core/Drawer';
 import DrawerSectionTree from "./DrawerSectionTree";
 
 
-
-
 const drawerWidth = 250;
 
 const useStyles = (props:Props) => makeStyles( () => ({

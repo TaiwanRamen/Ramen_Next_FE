@@ -1,15 +1,15 @@
-import {createContext, useContext, useState, ReactNode, useEffect} from "react";
+import {createContext, useContext, useState, ReactNode, useEffect, useMemo} from "react";
 import {IUser} from "../types/IUser";
-import Cookies from "js-cookie";
+import {destroyCookie} from 'nookies'
+
 
 type UserContextType = {
     user: IUser | null;
     setUser: (value: IUser | null) => void;
 };
-export const UserContext = createContext<UserContextType | undefined>(
-    undefined
-);
-
+export const UserContext = createContext<UserContextType | undefined>({
+    user: null, setUser: null
+});
 
 type Props = {
     children: ReactNode;
@@ -19,7 +19,7 @@ export const UserProvider = ({children}: Props) => {
     const [user, setUser] = useState<IUser | null>(null);
     useEffect(() => {
         checkAuth()
-    },[])
+    }, [])
 
 
     const checkAuth = () => {
@@ -29,15 +29,10 @@ export const UserProvider = ({children}: Props) => {
             setUser(localUser);
         } else {
             setUser(null);
-            Cookies.remove('access_token', {path: '', domain: process.env.REACT_APP_DOMAIN});
+            destroyCookie(null, 'access_token', {path: '', domain: process.env.NEXT_PUBLIC_APP_DOMAIN})
             window.localStorage.removeItem("current_user");
         }
     }
-
-    // const value = useMemo(() => ({
-    //     user,
-    //     setUser
-    // }), [user])
 
     return (
         <UserContext.Provider value={{user, setUser}}>

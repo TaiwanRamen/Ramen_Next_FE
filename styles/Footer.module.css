@@ -1,10 +1,10 @@
-.footer-bg {
+.footerBg {
     margin-top: 40px;
     display:flex;
     align-items:center;
     justify-content:center;
     max-height: 100vh;
-    background: #152F4F;
+    background-color: #152f4f;
     color: white;
     width:100%;
 }
@@ -50,4 +50,9 @@
 
 .footer .copyright p {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.labelIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px
 }

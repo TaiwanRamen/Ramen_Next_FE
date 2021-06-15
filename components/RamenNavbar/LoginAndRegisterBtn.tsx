@@ -1,6 +1,6 @@
 import {Button} from '@material-ui/core';
 import {makeStyles, Theme} from "@material-ui/core/styles";
-import {Link as RouterLink} from "react-router-dom";
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme: Theme) => ({
     login: {
@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 const LoginAndRegisterBtn = () => {
     const classes = useStyles();
+    const router = useRouter();
     return (
         <Button
             variant="outlined"
-            component={RouterLink}
             className={classes.login}
-            to="/login"
+            onClick={()=>router.push('login')}
         >
             登入
         </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import TreeItem, {TreeItemProps} from "@material-ui/lab/TreeItem";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Typography from "@material-ui/core/Typography";
