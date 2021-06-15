@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }),
 );
 
-export default function RamenNavbar({localUser}) {
+export default function RamenNavbar() {
     const classes = useStyles();
     const {user, setUser} = useUser();
     const {notificationCount, setNotificationCount} = useNotification()!;
@@ -83,7 +83,7 @@ export default function RamenNavbar({localUser}) {
     useEffect(()=>{
         const localUserString = window.localStorage.getItem("current_user");
         if (localUserString != null && localUserString !== "null" && localUserString !== "undefined") {
-            localUser = JSON.parse(localUserString);
+            let localUser = JSON.parse(localUserString);
             setUser(localUser)
         }
     },[])
