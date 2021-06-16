@@ -1,13 +1,23 @@
 import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import {makeStyles} from "@material-ui/core/styles";
-import {useMemo, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import useStackedSnackBar from "../../customHooks/UseStackedSnackBar";
 import usePost from "../../customHooks/usePost";
 import resizeFile from "./resizeImage";
 import LoadingIcon from "../Loading/LoadingIcon";
 import {Box, Dialog, DialogContent, DialogContentText} from "@material-ui/core";
+
+const ReactQuill = dynamic(
+    async () => {
+        const { default: RQ } = await import("react-quill");
+        return ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
+    },
+    {
+        ssr: false
+    }
+);
+
 
 const useStyles = makeStyles(() => ({
     quillEditor: {
@@ -37,6 +47,16 @@ const QuillEditor = (props: Props) => {
     const defaultContent = props.defaultContent ? props.defaultContent : window.localStorage.getItem(storageKey);
     const quillRef = useRef<any>();
 
+    useEffect(() => {
+        const check = () => {
+            if (quillRef.current) {
+                return;
+            }
+            setTimeout(check, 200);
+        };
+        check();
+    }, [quillRef]);
+
     const uploadImage = async (result: any) => {
         try {
             const formData = new FormData();
@@ -57,8 +77,8 @@ const QuillEditor = (props: Props) => {
             } else {
                 return new Error()
             }
-
         } catch (error) {
+            console.log(error)
             showSnackBar(`上傳圖片失敗`, 'error');
         }
     }
@@ -85,6 +105,7 @@ const QuillEditor = (props: Props) => {
                     editor?.insertEmbed(range.index, 'image', imageUrl, "user");
                     editor?.setSelection(range.index + 1, "API")
                 } catch (e) {
+                    console.log(e)
                     return showSnackBar(`上傳圖片出現問題`, 'error');
                 } finally {
                     setIsUploading(false)
@@ -130,7 +151,7 @@ const QuillEditor = (props: Props) => {
             </Dialog>
 
             <ReactQuill
-                ref={quillRef}
+                forwardedRef={quillRef}
                 theme="snow"
                 defaultValue={defaultContent ? defaultContent : ""}
                 modules={modules}
