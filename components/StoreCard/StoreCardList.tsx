@@ -12,7 +12,7 @@ const StoreCardList = (props: Props) => {
 
     return (
 
-        <Grid container direction="row" justify="space-between" alignItems="center" spacing={5}>
+        <Grid container direction="row" justify="flex-start" alignItems="center" spacing={5}>
             {!stores && <Loading/>}
             {stores && stores.map(store =>
                 <Grid key={store._id} item xs={12} sm={12} md={6} lg={4}>

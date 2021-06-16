@@ -56,7 +56,7 @@ const FollowBtn = (props: Props) => {
                     requestBody: {},
                 };
                 await mutateAsync(reqProps);
-                showSnackBar(`成功取消追蹤: ${store.name}`, 'default');
+                showSnackBar(`成功取消追蹤: ${store.name}`, 'success');
                 setIsUserFollowStore(!isUserFollowStore);
             } catch (e) {
                 showSnackBar(`取消追蹤: ${store.name} 失敗`, 'error')

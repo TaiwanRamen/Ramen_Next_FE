@@ -17,7 +17,7 @@ const LoginAndRegisterBtn = () => {
         <Button
             variant="outlined"
             className={classes.login}
-            onClick={()=>router.push('login')}
+            onClick={()=>router.push('/login')}
         >
             登入
         </Button>

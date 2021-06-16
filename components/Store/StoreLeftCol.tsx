@@ -1,6 +1,6 @@
 import {Box, Button} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAngleDoubleLeft} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDoubleLeft, faStoreAlt} from "@fortawesome/free-solid-svg-icons";
 import {makeStyles} from "@material-ui/core/styles";
 import ReactMapGL, {Marker} from "react-map-gl";
 import {IStore} from "../../types/IStore";
@@ -11,6 +11,7 @@ import {Tab, Tabs} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {useRouter} from "next/router";
 import CloseToMetro from "../CloseToMetro/CloseToMetro";
+import {useStore} from "../../context/StoreContext";
 // import OpeningHours from "./OpeningHours";
 
 const useStyles = makeStyles(() => ({
@@ -19,8 +20,8 @@ const useStyles = makeStyles(() => ({
         borderRadius: 10,
     },
     backButton: {
-        marginTop: "1rem",
-        marginBottom: "1rem",
+        marginTop: 20,
+        marginBottom: "rem",
         width: "100%",
         "&:hover": {
             backgroundColor: "#efefef",
@@ -93,6 +94,10 @@ const StoreLeftCol = (props: Props) => {
             <Button variant="outlined" className={classes.backButton} onClick={() => router.back()}>
                 <FontAwesomeIcon icon={faAngleDoubleLeft}/>
                 <span className={classes.back}>返回上一頁</span>
+            </Button>
+            <Button variant="outlined" className={classes.backButton} onClick={() => router.push('/stores')}>
+                <FontAwesomeIcon icon={faStoreAlt}/>
+                <span className={classes.back}>店家列表</span>
             </Button>
 
             <Tabs

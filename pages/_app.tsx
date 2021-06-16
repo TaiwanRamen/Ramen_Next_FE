@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from "next/head";
 import * as React from 'react';
+import axios from "axios";
 import {SnackbarProvider} from 'notistack';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Grow} from "@material-ui/core";
@@ -13,11 +14,12 @@ import RamenNavbar from "../components/RamenNavbar/RamenNavbar";
 import MainLayout from "../components/MainLayout/MainLayout";
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import NetworkInterceptors from "../utils/NetworkInterceptors";
+
 
 function MyApp({Component, pageProps}) {
 
     const [queryClient] = React.useState(() => new QueryClient())
-
     React.useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector('#jss-server-side');
@@ -37,20 +39,22 @@ function MyApp({Component, pageProps}) {
             maxSnack={3}
             TransitionComponent={Grow}
         >
-            <QueryClientProvider client={queryClient}>
-                <UserProvider>
-                    <>
-                        <NotificationProvider>
-                            <RamenNavbar/>
-                        </NotificationProvider>
-                        <ScrollToTop/>
-                        <MainLayout>
-                            <DefaultSeo {...SEO} />
-                            <Component {...pageProps} />
-                        </MainLayout>
-                    </>
-                </UserProvider>
-            </QueryClientProvider>
+            <NetworkInterceptors>
+                <QueryClientProvider client={queryClient}>
+                    <UserProvider>
+                        <>
+                            <NotificationProvider>
+                                <RamenNavbar/>
+                            </NotificationProvider>
+                            <ScrollToTop/>
+                            <MainLayout>
+                                <DefaultSeo {...SEO} />
+                                <Component {...pageProps} />
+                            </MainLayout>
+                        </>
+                    </UserProvider>
+                </QueryClientProvider>
+            </NetworkInterceptors>
         </SnackbarProvider>
     </>
 }

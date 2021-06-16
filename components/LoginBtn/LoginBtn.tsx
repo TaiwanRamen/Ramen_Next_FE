@@ -7,6 +7,7 @@ import LoadingIcon from "../Loading/LoadingIcon";
 import Button from "@material-ui/core/Button";
 import {Box} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles(() => ({
     login: {
@@ -20,6 +21,7 @@ type Props = {
 }
 const Login = (props: Props) => {
     const classes = useStyles();
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [isLoginFail, setIsLoginFail] = useState(false);
     const [loginCount, setLoginCount] = useState(0);
@@ -39,21 +41,18 @@ const Login = (props: Props) => {
 
             let loginUser = serverRes.data.data.user;
             setUser(loginUser);
-            const cookies = parseCookies()
-            console.log({cookies})
-
             // Set
             setCookie(null, 'access_token', serverRes.data.data.token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
-
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
             setIsLoginFail(true);
             setLoginCount(loginCount + 1)
         } finally {
             setIsLoading(false);
+            await router.push('/')
         }
     };
 

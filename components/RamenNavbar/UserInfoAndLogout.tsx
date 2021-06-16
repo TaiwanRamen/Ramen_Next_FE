@@ -14,7 +14,7 @@ import StyledMenu from "../StyledMenu/StyledMenu";
 import {makeStyles} from "@material-ui/core/styles";
 import {useUser} from "../../context/UserContext";
 import { useRouter } from 'next/router'
-import {destroyCookie} from 'nookies'
+import {setCookie} from 'nookies'
 import {Divider} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
@@ -47,9 +47,13 @@ const UserInfoAndLogout = () => {
 
     const handleLogout = async () => {
         setUser(null);
-        await destroyCookie(null, 'access_token',{path: '', domain: process.env.NEXT_PUBLIC_APP_DOMAIN})
+        await setCookie({}, 'access_token', '', {
+            maxAge: -1,
+            path: '/',
+            secure: process.env.NODE_ENV === 'production',
+        })
         window.localStorage.removeItem("current_user");
-        await router.push("/");
+        await router.push("/login");
     }
 
     return (
@@ -63,7 +67,7 @@ const UserInfoAndLogout = () => {
             >
                 {user && <Box m={2}>
                     <Typography variant="button" display="inline">
-                        {user?.fbName}
+                        {user?.username}
                     </Typography>
                 </Box>}
                 {user ? <Avatar src={user?.avatar}/> : <AccountCircle/>}

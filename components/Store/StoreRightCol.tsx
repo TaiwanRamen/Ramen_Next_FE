@@ -59,7 +59,6 @@ type Props = {
     currentTabNum: number,
     setCurrentTabNum: Function,
     data: {
-        mapboxAccessToken: string,
         isStoreOwner: boolean,
         store: IStore
     }

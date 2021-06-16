@@ -55,9 +55,9 @@ const SubCategorySection = () => {
     };
     return (
         <>
-            <Button className={classes.selection} onClick={() => router.push("/storesAround")}>
-                附近店家
-            </Button>
+            {/*<Button className={classes.selection} onClick={() => router.push("/storesAround")}>*/}
+            {/*    附近店家*/}
+            {/*</Button>*/}
             <Divider className={classes.divider} orientation="vertical"/>
 
             <Button className={classes.selection} onClick={() => router.push("/stores")}>

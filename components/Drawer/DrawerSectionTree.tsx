@@ -46,13 +46,13 @@ export default function CustomTreeView(props: Props) {
                 defaultCollapseIcon={<ArrowDropDownIcon/>}
                 defaultExpandIcon={<ArrowRightIcon/>}
             >
-                <StyledTreeItem
-                    nodeId="0"
-                    labelText="附近店家"
-                    href="/storesAround"
-                    labelIconFA={faStreetView}
-                    onClick={toggleDrawerOpen}
-                />
+                {/*<StyledTreeItem*/}
+                {/*    nodeId="0"*/}
+                {/*    labelText="附近店家"*/}
+                {/*    href="/storesAround"*/}
+                {/*    labelIconFA={faStreetView}*/}
+                {/*    onClick={toggleDrawerOpen}*/}
+                {/*/>*/}
                 <Divider/>
                 <StyledTreeItem
                     nodeId="1"
@@ -116,13 +116,13 @@ export default function CustomTreeView(props: Props) {
                                 setNotificationCount(0);
                                 toggleDrawerOpen()
                             }}
-                            href="/notification"
+                            href="/user/notification"
                         />
                         <StyledTreeItem
                             nodeId="23"
                             labelText="追蹤清單"
                             labelIcon={BookmarkIcon}
-                            href="/following"
+                            href="/user/following"
                             onClick={toggleDrawerOpen}
                         />
                         {/*<StyledTreeItem*/}
@@ -136,7 +136,7 @@ export default function CustomTreeView(props: Props) {
                             nodeId="25"
                             labelText="已評論店家"
                             labelIcon={CommentIcon}
-                            href="/reviewed"
+                            href="/user/reviewed"
                             onClick={toggleDrawerOpen}
                         />
                         {/*<StyledTreeItem*/}

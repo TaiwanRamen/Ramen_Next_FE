@@ -7,16 +7,16 @@ import {Grid} from "@material-ui/core";
 import StoreLeftCol from "../../../components/Store/StoreLeftCol";
 import StoreRightCol from "../../../components/Store/StoreRightCol";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
+import {StoreProvider} from "../../../context/StoreContext";
 
 type StoreResponse = {
-    mapboxAccessToken: string,
     isStoreOwner: boolean,
     store: IStore
 }
 
 const Store = () => {
-    const router = useRouter()
-    const { id } = router.query
+    const router = useRouter();
+    const {id} = router.query
     const [currentTabNum, setCurrentTabNum] = React.useState(0);
 
     const options = {
@@ -33,18 +33,21 @@ const Store = () => {
     }
 
     if (status === "error") {
-        return <ErrorMessage message={error.message} />;
+        return <ErrorMessage message={error.message}/>;
     }
 
 
     return data ?
         <Grid container direction="row" justify="space-between" spacing={3}>
-            <Grid key={"leftCol"} item sm={12} md={3}>
-                <StoreLeftCol store={data.store} currentTabNum={currentTabNum} setCurrentTabNum={setCurrentTabNum}/>
-            </Grid>
-            <Grid key={"rightCol"} item sm={12} md={9}>
-                <StoreRightCol data={data} currentTabNum={currentTabNum} setCurrentTabNum={setCurrentTabNum}/>
-            </Grid>
+            <StoreProvider>
+                <Grid key={"leftCol"} item sm={12} md={3}>
+                    <StoreLeftCol store={data.store} currentTabNum={currentTabNum} setCurrentTabNum={setCurrentTabNum}/>
+                </Grid>
+                <Grid key={"rightCol"} item sm={12} md={9}>
+
+                    <StoreRightCol data={data} currentTabNum={currentTabNum} setCurrentTabNum={setCurrentTabNum}/>
+                </Grid>
+            </StoreProvider>
         </Grid>
         : null;
 };

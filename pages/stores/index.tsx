@@ -15,7 +15,6 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 type Stores = {
     current: number;
-    mapboxAccessToken: string;
     pages: number;
     search: boolean;
     stores: IStore[]

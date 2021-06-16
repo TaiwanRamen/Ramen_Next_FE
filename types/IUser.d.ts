@@ -1,6 +1,6 @@
 import {UserRole} from '../enums/UserRole';
 export interface IUser {
-    userName?:string,
+    username?:string,
     avatar: string ,
     isVerified: boolean,
     userRole: UserRole,
@@ -10,7 +10,6 @@ export interface IUser {
     reviews: any,
     _id: string,
     fbUid: string,
-    fbName: string,
     email: string,
     createdAt: string,
     updatedAt: string,

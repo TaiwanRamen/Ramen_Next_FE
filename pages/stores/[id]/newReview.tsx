@@ -48,7 +48,6 @@ const useStyles = makeStyles(() => ({
 }))
 
 type StoreResponse = {
-    mapboxAccessToken: string,
     isStoreOwner: boolean,
     store: IStore
 }
