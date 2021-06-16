@@ -2,7 +2,7 @@ import axios from "axios";
 import useStackedSnackBar from "../customHooks/UseStackedSnackBar";
 import {useUser} from "../context/UserContext";
 import {useRouter} from "next/router";
-import {setCookie} from "nookies";
+import nookies from "nookies";
 import {Box} from "@material-ui/core";
 
 const NetworkInterceptors = ({children}) => {
@@ -19,7 +19,7 @@ const NetworkInterceptors = ({children}) => {
                     console.log("401!!!")
                     // setUser(null);
                     // window.localStorage.removeItem("current_user");
-                    // await setCookie({}, 'access_token', '', {
+                    // await nookies.set({}, 'access_token', '', {
                     //     maxAge: -1,
                     //     path: '/',
                     //     secure: process.env.NODE_ENV === 'production',

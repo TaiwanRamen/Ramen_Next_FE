@@ -8,6 +8,7 @@ import StoreLeftCol from "../../../components/Store/StoreLeftCol";
 import StoreRightCol from "../../../components/Store/StoreRightCol";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import {StoreProvider} from "../../../context/StoreContext";
+import withAuth from "../../../HOC/withAuth";
 
 type StoreResponse = {
     isStoreOwner: boolean,
@@ -16,13 +17,14 @@ type StoreResponse = {
 
 const Store = () => {
     const router = useRouter();
-    const {id} = router.query
+    const {id} = router.query;
     const [currentTabNum, setCurrentTabNum] = React.useState(0);
 
     const options = {
         key: "store",
         url: process.env.NEXT_PUBLIC_BE_URL + `/api/v1/stores/${id}`,
-        requestQuery: {}
+        requestQuery: {},
+        enabled: id !== undefined
     }
 
     const {data, status, error} = useFetch<StoreResponse>(options);
@@ -52,4 +54,4 @@ const Store = () => {
         : null;
 };
 
-export default Store;
+export default (Store);

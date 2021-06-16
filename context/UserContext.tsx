@@ -1,6 +1,5 @@
 import {createContext, useContext, useState, ReactNode, useEffect, useMemo} from "react";
 import {IUser} from "../types/IUser";
-import {destroyCookie} from 'nookies'
 
 
 type UserContextType = {

@@ -14,6 +14,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDoubleLeft} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
+import withAuth from "../../../HOC/withAuth";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -70,8 +71,10 @@ const newReview = () => {
     const options = {
         key: "store",
         url: process.env.NEXT_PUBLIC_BE_URL + `/api/v1/stores/${id}`,
-        requestQuery: {}
+        requestQuery: {},
+        enabled: id !== undefined
     }
+
     const {data, status, error} = useFetch<StoreResponse>(options);
     const {mutateAsync, isLoading} = usePost();
 
@@ -173,4 +176,4 @@ const newReview = () => {
     return null;
 };
 
-export default newReview;
+export default withAuth(newReview);

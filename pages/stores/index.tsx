@@ -11,6 +11,7 @@ import {QueryClient} from "react-query";
 import {dehydrate} from "react-query/hydration";
 import axios from "axios";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import withAuth from "../../HOC/withAuth";
 
 
 type Stores = {
@@ -66,7 +67,7 @@ const Stores = () => {
         </> : null;
 };
 
-export default Stores;
+export default withAuth(Stores);
 //
 // export async function getStaticProps() {
 //     const queryClient = new QueryClient()

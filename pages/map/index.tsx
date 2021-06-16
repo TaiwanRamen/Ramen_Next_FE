@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/styles";
 import ReactMapGL, {GeolocateControl, NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import {Button} from "@material-ui/core";
 import MapContent from "../../components/Map/MapContent";
+import withAuth from "../../HOC/withAuth";
 
 
 const useStyles = makeStyles(() => ({
@@ -134,4 +135,4 @@ const Map = () => {
 
 };
 
-export default Map;
+export default withAuth(Map);

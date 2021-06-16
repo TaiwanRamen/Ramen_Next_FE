@@ -47,7 +47,7 @@ const UserInfoAndLogout = () => {
 
     const handleLogout = async () => {
         setUser(null);
-        await setCookie({}, 'access_token', '', {
+        await setCookie(null, 'access_token', '', {
             maxAge: -1,
             path: '/',
             secure: process.env.NODE_ENV === 'production',

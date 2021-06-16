@@ -7,6 +7,7 @@ import CustomPagination from "../../components/CustomerPagination/CustomPaginati
 import NotificationStrip from "../../components/NotificationStrip/NotificationStrip";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import withAuth from "../../HOC/withAuth";
 
 const useStyles = makeStyles((theme: Theme) => ({
         root: {
@@ -100,4 +101,4 @@ const Notification = () => {
 
 
 };
-export default Notification;
+export default withAuth(Notification);

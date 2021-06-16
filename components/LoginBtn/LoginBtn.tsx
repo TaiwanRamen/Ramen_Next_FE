@@ -1,7 +1,7 @@
 import FacebookLogin from "react-facebook-login";
 import {useState} from "react";
 import axios from 'axios';
-import {setCookie, parseCookies} from 'nookies'
+import {setCookie} from 'nookies';
 import {useUser} from "../../context/UserContext";
 import LoadingIcon from "../Loading/LoadingIcon";
 import Button from "@material-ui/core/Button";
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 type Props = {
     disabled?: boolean
 }
-const Login = (props: Props) => {
+const LoginBtn = (props: Props) => {
     const classes = useStyles();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,7 @@ const Login = (props: Props) => {
             setLoginCount(loginCount + 1)
         } finally {
             setIsLoading(false);
-            await router.push('/')
+            await router.replace('/')
         }
     };
 
@@ -109,4 +109,4 @@ const Login = (props: Props) => {
     );
 };
 
-export default Login;
+export default LoginBtn;

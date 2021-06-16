@@ -5,6 +5,7 @@ import {Box} from "@material-ui/core";
 import CustomPagination from "../../components/CustomerPagination/CustomPagination";
 import {makeStyles} from "@material-ui/styles";
 import FollowingStrip from "../../components/FollowingStrip/FollowingStrip";
+import withAuth from "../../HOC/withAuth";
 
 const useStyles = makeStyles(() => ({
         root: {
@@ -81,4 +82,4 @@ const Following = () => {
         </Box> : null
 };
 
-export default Following;
+export default withAuth(Following);

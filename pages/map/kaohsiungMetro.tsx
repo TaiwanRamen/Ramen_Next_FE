@@ -8,6 +8,7 @@ import {makeStyles, Theme} from "@material-ui/core/styles";
 import Loading from "../../components/Loading/Loading";
 import MetroMapPopper from "../../components/MetroMap/MetroMapPopper";
 import MetroSideDrawer from "../../components/MetroMap/MetroSideDrawer";
+import withAuth from "../../HOC/withAuth";
 
 const imageWidth = 1110;
 
@@ -149,4 +150,4 @@ const KaohsiungMetro = () => {
 
 };
 
-export default KaohsiungMetro;
+export default withAuth(KaohsiungMetro);
