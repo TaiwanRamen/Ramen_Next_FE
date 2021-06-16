@@ -4236,10 +4236,22 @@ react-facebook@^8.1.4:
     can-use-dom "^0.1.0"
     react-spinner-children "^1.0.8"
 
+react-fast-compare@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
 react-image-file-resizer@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/react-image-file-resizer/-/react-image-file-resizer-0.4.4.tgz#07d47d795e07a8a9850d480765c618686a4af4dd"
   integrity sha512-qSZ5VJwWDkFan8IKCxDZqkAlQ6OW+mIDQLA9Y8T6/mLNUbHfnl3kjTpUWACeuh7cyPDXr1i6/GjlinyI75rBmQ==
+
+react-img-mapper@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/react-img-mapper/-/react-img-mapper-1.1.10.tgz#b944d5a2132c7424a40bc463215f13720fb152bc"
+  integrity sha512-es7dhoYqSau73obU+Nq1ZmrLkQ70sZSYq9PhGQkR+7vd6A9yTZRIzQvrSOyPUnjo40i1a3k34ZsDmyj6XWA/3Q==
+  dependencies:
+    react-fast-compare "^3.2.0"
 
 react-is@16.13.1, react-is@^16.3.2, react-is@^16.7.0, "react-is@^16.8.0 || ^17.0.0", react-is@^16.8.1:
   version "16.13.1"

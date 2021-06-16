@@ -79,14 +79,14 @@ export default function CustomTreeView(props: Props) {
                         nodeId="12"
                         labelText="臺北捷運地圖"
                         labelIconSVG={"/taipei_metro_logo_gray.svg"}
-                        href="/map/TaipeiMetro"
+                        href="/map/taipeiMetro"
                         onClick={toggleDrawerOpen}
                     />
                     <StyledTreeItem
                         nodeId="13"
                         labelText="高雄捷運地圖"
                         labelIconSVG={"/kaohsiung_metro_logo_gray.svg"}
-                        href="/map/KaohsiungMetro"
+                        href="/map/kaohsiungMetro"
                         onClick={toggleDrawerOpen}
                     />
                 </StyledTreeItemHead>

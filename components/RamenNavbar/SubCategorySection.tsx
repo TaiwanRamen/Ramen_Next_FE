@@ -86,7 +86,7 @@ const SubCategorySection = () => {
                     </>
                 </MenuItem>
 
-                <MenuItem  onClick={() => menuItemClicked('/map')}>
+                <MenuItem  onClick={() => menuItemClicked('/map/taipeiMetro')}>
                     <>
                         <ListItemIcon className={classes.listItemIcon}>
                             <img className={classes.imageIcon} src={'/taipei_metro_logo_gray.svg'}
@@ -96,7 +96,7 @@ const SubCategorySection = () => {
                     </>
 
                 </MenuItem>
-                <MenuItem  onClick={() => menuItemClicked('/map')}>
+                <MenuItem  onClick={() => menuItemClicked('/map/kaohsiungMetro')}>
                     <>
                         <ListItemIcon className={classes.listItemIcon}>
                             <img className={classes.imageIcon} src={'/kaohsiung_metro_logo_gray.svg'}
