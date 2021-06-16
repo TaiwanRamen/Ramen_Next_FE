@@ -20,7 +20,7 @@ export default function useFetch<T>(props: Props) {
             const response = await axios.get(url, {params: params, withCredentials: true});
             return await response.data.data;
         } catch (error) {
-            throw new Error("Problem fetching data, please retry later");
+            throw new Error("從伺服器取得資料發生問題，請重新整理");
         }
     }
 

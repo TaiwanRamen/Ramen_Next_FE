@@ -1,33 +1,34 @@
-import React, {useState} from 'react';
-import {makeStyles} from "@material-ui/styles";
-import {IStore} from "../../../types/IStore";
-import useStackedSnackBar from "../../../customHooks/UseStackedSnackBar";
-import useFetch from "../../../customHooks/UseFetch";
-import usePost from "../../../customHooks/usePost";
-import Loading from "../../../components/Loading/Loading";
-import {Rating} from "@material-ui/lab";
-import LoadingIcon from "../../../components/Loading/LoadingIcon";
-import {Box, Button, Dialog, DialogContent, DialogContentText, Paper, Typography} from "@material-ui/core";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import QuillEditor from "../../../components/QuillEditor/QuillEditor";
+import useStackedSnackBar from "../../customHooks/UseStackedSnackBar";
+import {useState} from "react";
+import QuillEditor from "../QuillEditor/QuillEditor";
+import {IStore} from "../../types/IStore";
+import useFetch from "../../customHooks/UseFetch";
+import Loading from "../Loading/Loading";
+import {Box, Button, Dialog, DialogContent, DialogContentText, Paper} from "@material-ui/core";
+import usePost from "../../customHooks/usePost";
+import LoadingIcon from "../Loading/LoadingIcon";
+import Rating from "@material-ui/lab/Rating";
+import {makeStyles} from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDoubleLeft} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
-import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const useStyles = makeStyles(() => ({
     root: {
         padding: 50,
-        paddingTop:20,
+        paddingTop: 20,
         borderRadius: 10,
     },
-    goBackText:{
+    goBackText: {
         marginLeft: 10
     },
-    goBackBtn:{
+    goBackBtn: {
         color: "gray",
-        marginTop:20,
-        marginBottom:20
+        marginTop: 20,
+        marginBottom: 20
     },
     submitBtn: {
         margin: 5,
@@ -42,7 +43,7 @@ const useStyles = makeStyles(() => ({
         marginBottom: 5
     },
     ratingText: {
-        alignText:"middle",
+        alignText: "middle",
         color: "red"
     },
 }))
@@ -53,9 +54,10 @@ type StoreResponse = {
     store: IStore
 }
 
-const newReview = () => {
+
+const AddReviewPage = () => {
     const showSnackBar = useStackedSnackBar();
-    const router = useRouter();
+    const router = useRouter()
     const {id} = router.query;
     const classes = useStyles();
 
@@ -119,7 +121,7 @@ const newReview = () => {
         }
 
         return <Paper className={classes.root}>
-            <Button variant="outlined" className={classes.goBackBtn} onClick={()=>router.push(`/stores/${id}`)}>
+            <Button variant="outlined" className={classes.goBackBtn} onClick={() => router.push(`/stores/${id}`)}>
                 <FontAwesomeIcon icon={faAngleDoubleLeft}/>
                 <span className={classes.goBackText}>返回店家</span>
             </Button>
@@ -174,4 +176,4 @@ const newReview = () => {
     return null;
 };
 
-export default newReview;
+export default AddReviewPage;

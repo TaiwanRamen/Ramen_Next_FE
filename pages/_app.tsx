@@ -11,10 +11,12 @@ import ScrollToTop from "../customHooks/ScrollToTop";
 import {NotificationProvider} from "../context/NotificationContext";
 import RamenNavbar from "../components/RamenNavbar/RamenNavbar";
 import MainLayout from "../components/MainLayout/MainLayout";
-
-const queryClient = new QueryClient();
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 
 function MyApp({Component, pageProps}) {
+
+    const [queryClient] = React.useState(() => new QueryClient())
 
     React.useEffect(() => {
         // Remove the server-side injected CSS.
@@ -43,6 +45,7 @@ function MyApp({Component, pageProps}) {
                         </NotificationProvider>
                         <ScrollToTop/>
                         <MainLayout>
+                            <DefaultSeo {...SEO} />
                             <Component {...pageProps} />
                         </MainLayout>
                     </>

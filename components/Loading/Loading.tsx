@@ -1,4 +1,4 @@
-import './Loading.css';
+import '../../styles/Loading.module.css';
 import LoadingSpinner from "./LoadingSpinner";
 import {makeStyles} from "@material-ui/core/styles";
 

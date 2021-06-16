@@ -21,7 +21,7 @@ const usePost = () => {
                 withCredentials: true
             })
         } catch (error) {
-            throw new Error("Problem fetching data");
+            throw new Error("推送資料發生問題，請重新整理");
         }
     }
     return useMutation((props: Props) => postData(props));

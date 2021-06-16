@@ -50,7 +50,6 @@ const Login = (props: Props) => {
 
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
-            console.log("error:", e);
             setIsLoginFail(true);
             setLoginCount(loginCount + 1)
         } finally {

@@ -1,4 +1,3 @@
-import loadingSpinner from "../../static/Spinner-1s-200px.svg";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
@@ -10,12 +9,13 @@ const useStyles = makeStyles(() => ({
         width: "100%",
     },
 }))
+
 const LoadingSpinner = ({...props}: any) => {
     const classes = useStyles();
 
     return (
         <div {...props}>
-            <img className={classes.spinner} src={loadingSpinner} alt="" />
+            <img className={classes.spinner} src={"/Spinner-1s-200px.svg"} alt="" />
         </div>
     );
 };
