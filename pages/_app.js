@@ -13,7 +13,7 @@ import {NotificationProvider} from "../context/NotificationContext";
 import RamenNavbar from "../components/RamenNavbar/RamenNavbar";
 import MainLayout from "../components/MainLayout/MainLayout";
 import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config';
+// import SEO from '../next-seo.config';
 import NetworkInterceptors from "../utils/NetworkInterceptors";
 
 
@@ -48,7 +48,7 @@ function MyApp({Component, pageProps}) {
                             </NotificationProvider>
                             <ScrollToTop/>
                             <MainLayout>
-                                <DefaultSeo {...SEO} />
+                                {/*<DefaultSeo {...SEO} />*/}
                                 <Component {...pageProps} />
                             </MainLayout>
                         </>

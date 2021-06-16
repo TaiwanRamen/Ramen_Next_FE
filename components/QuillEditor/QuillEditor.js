@@ -33,19 +33,19 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-type Props = {
-    storageKey: string,
-    defaultContent?: string
-}
+// type Props = {
+//     storageKey: string,
+//     defaultContent?: string
+// }
 
-const QuillEditor = (props: Props) => {
+const QuillEditor = (props) => {
     const classes = useStyles();
     const storageKey = props.storageKey;
     const showSnackBar = useStackedSnackBar();
     const {mutateAsync} = usePost();
-    const [isUploading, setIsUploading] = useState<boolean>(false);
+    const [isUploading, setIsUploading] = useState(false);
     const defaultContent = props.defaultContent ? props.defaultContent : window.localStorage.getItem(storageKey);
-    const quillRef = useRef<any>();
+    const quillRef = useRef();
 
     useEffect(() => {
         const check = () => {
@@ -57,7 +57,7 @@ const QuillEditor = (props: Props) => {
         check();
     }, [quillRef]);
 
-    const uploadImage = async (result: any) => {
+    const uploadImage = async (result) => {
         try {
             const formData = new FormData();
             formData.append('upload_image', result);
@@ -135,7 +135,7 @@ const QuillEditor = (props: Props) => {
     const formats = ['header', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'link', 'image'];
 
 
-    const onQuillChange = (content: any) => {
+    const onQuillChange = (content) => {
         window.localStorage.setItem(storageKey, content);
     }
 
