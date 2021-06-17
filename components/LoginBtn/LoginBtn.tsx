@@ -1,7 +1,7 @@
 import FacebookLogin from "react-facebook-login";
 import {useState} from "react";
 import axios from 'axios';
-import {setCookie} from 'nookies';
+import {parseCookies, setCookie} from 'nookies';
 import {useUser} from "../../context/UserContext";
 import LoadingIcon from "../Loading/LoadingIcon";
 import Button from "@material-ui/core/Button";
@@ -41,13 +41,17 @@ const LoginBtn = (props: Props) => {
 
             let loginUser = serverRes.data.data.user;
             setUser(loginUser);
-            // Set
-            setCookie(null, 'access_token', serverRes.data.data.token, {
-                maxAge: 30 * 24 * 60 * 60,
-                path: '/',
-            })
+            if (parseCookies(null, 'access_token')) {
+                throw new Error()
+            }
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
+            await setCookie(null, 'access_token', '', {
+                maxAge: -1,
+                path: '/',
+                secure: process.env.NODE_ENV === 'production',
+            })
+            window.localStorage.removeItem("current_user");
             setIsLoginFail(true);
             setLoginCount(loginCount + 1)
         } finally {
