@@ -46,7 +46,7 @@ const LoginBtn = (props: Props) => {
                 maxAge: 30 * 24 * 60 * 60,
                 sameSite: "none",
                 secure: true,
-                domain:'.taiwanramen.club'
+                domain: process.env.NODE_ENV === 'production' ? '.taiwanramen.club' : 'localhost'
             })
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
