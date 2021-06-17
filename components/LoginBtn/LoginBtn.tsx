@@ -41,10 +41,10 @@ const LoginBtn = (props: Props) => {
 
             let loginUser = serverRes.data.data.user;
             setUser(loginUser);
-
-            setCookie(null, 'access_token', serverRes.data.data.token, {
-                maxAge: 30 * 24 * 60 * 60,
-            })
+            //
+            // setCookie(null, 'access_token', serverRes.data.data.token, {
+            //     maxAge: 30 * 24 * 60 * 60,
+            // })
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
             await setCookie(null, 'access_token', '', {
