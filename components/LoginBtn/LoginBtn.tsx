@@ -45,7 +45,8 @@ const LoginBtn = (props: Props) => {
             setCookie(null, 'access_token', serverRes.data.data.token, {
                 maxAge: 30 * 24 * 60 * 60,
                 sameSite: "none",
-                secure: true
+                secure: true,
+                domain:'.taiwanramen.club'
             })
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
