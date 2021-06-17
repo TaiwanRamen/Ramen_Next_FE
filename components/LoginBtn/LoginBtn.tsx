@@ -41,9 +41,12 @@ const LoginBtn = (props: Props) => {
 
             let loginUser = serverRes.data.data.user;
             setUser(loginUser);
-            if (parseCookies(null, 'access_token')) {
+
+            let accessToken = await parseCookies(null, 'access_token');
+            if (!accessToken) {
                 throw new Error()
             }
+
             window.localStorage.setItem("current_user", JSON.stringify(loginUser));
         } catch (e) {
             await setCookie(null, 'access_token', '', {
