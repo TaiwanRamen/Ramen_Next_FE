@@ -14,6 +14,7 @@ import {useUser} from "../../context/UserContext";
 import FollowBtn from "../FollowBtn/FollowBtn";
 import * as React from "react";
 import {useRouter} from "next/router";
+import createDOMPurify from 'dompurify';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -103,7 +104,12 @@ const StoreCard = (props: Props) => {
     const router = useRouter();
     const rating = store.rating ? store.rating.toFixed(1) : "無評分";
 
-    const descriptionTrimmer = (description: string) => {
+    const descriptionHTMLTrimmer = (descriptionHTML: string) => {
+        const DOMPurify = createDOMPurify()
+        let html = DOMPurify.sanitize(descriptionHTML)
+        let tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        let description = tmp.textContent || tmp.innerText || "";
         if (description.length > 200) {
             return description.substring(0, 200) + "...";
         }
@@ -140,7 +146,7 @@ const StoreCard = (props: Props) => {
 
                     <div className={classes.cardBody}>
                         <Typography color={'textSecondary'} variant={'body2'}>
-                            {descriptionTrimmer(store.descriptionText)}
+                            {descriptionHTMLTrimmer(store.descriptionHTML)}
                         </Typography>
                     </div>
 

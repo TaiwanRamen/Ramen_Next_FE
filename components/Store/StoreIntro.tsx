@@ -30,9 +30,7 @@ const StoreIntro = (props: Props) => {
             <CarouselImage imageUrls={imageUrls}/>
             <Box mt={5} mb={2}>
                 <Divider className={classes.divider} orientation="horizontal" variant="fullWidth"/>
-
                 <h3 className={classes.title}>介紹</h3>
-
                 <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(store.descriptionHTML)}}/>
                 <Divider className={classes.divider} orientation="horizontal" variant="fullWidth"/>
             </Box>

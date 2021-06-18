@@ -3,7 +3,6 @@ export interface IStore {
     city: string,
     createdAt: string,
     descriptionHTML: string,
-    descriptionText: string,
     imageLarge?: string[],
     imageSmall?: string[],
     location: { type: string, coordinates: number[], geoHash: string },

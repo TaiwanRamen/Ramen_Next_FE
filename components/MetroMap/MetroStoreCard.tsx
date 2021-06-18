@@ -12,6 +12,7 @@ import Box from "@material-ui/core/Box";
 import {Grid} from "@material-ui/core";
 import * as React from "react";
 import {useRouter} from "next/router";
+import createDOMPurify from 'dompurify';
 
 const useStyles = makeStyles(() => ({
         cardRoot: {
@@ -49,7 +50,12 @@ const MetroStoreCard = (props: Props) => {
     const rating = store.rating ? store.rating.toFixed(1) : "無評分";
 
 
-    const descriptionTrimmer = (description: string) => {
+    const descriptionTrimmer = (descriptionHTML: string) => {
+        const DOMPurify = createDOMPurify()
+        let html = DOMPurify.sanitize(descriptionHTML)
+        let tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        let description = tmp.textContent || tmp.innerText || "";
         if (description.length > 100) {
             return description.substring(0, 100) + "...";
         }
@@ -58,7 +64,7 @@ const MetroStoreCard = (props: Props) => {
 
     return (
         <Card className={classes.card} id={store._id} key={store._id}>
-            <CardActionArea>
+            <CardActionArea onClick={() => router.push(`/stores/${store._id}`)}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -92,7 +98,7 @@ const MetroStoreCard = (props: Props) => {
                     </Grid>
                     <Typography variant="body2" color="textSecondary" component="p">
                         <Typography color={'textSecondary'} variant={'body2'}>
-                            {descriptionTrimmer(store.descriptionText)}
+                            {descriptionTrimmer(store.descriptionHTML)}
                         </Typography>
                     </Typography>
                 </CardContent>
