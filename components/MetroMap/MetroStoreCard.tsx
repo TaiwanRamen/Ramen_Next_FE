@@ -46,7 +46,7 @@ const MetroStoreCard = (props: Props) => {
     const store = props.store;
     const storeName = store.name;
     const distance = store.distance;
-    const storeImages = props.store?.imageSmall;
+    const storeImages = props.store?.googleImages;
     const rating = store.rating ? store.rating.toFixed(1) : "無評分";
 
 

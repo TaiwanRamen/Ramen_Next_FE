@@ -121,7 +121,7 @@ const StoreCard = (props: Props) => {
             <Card elevation={0} className={classes.root} id={store._id} key={store._id}>
                 <CardMedia
                     className={classes.cardMedia}
-                    image={store.imageSmall![0]}
+                    image={store.googleImages![0]}
                 >
                     {user && <FollowBtn store={store}/>}
                 </CardMedia>

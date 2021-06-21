@@ -23,7 +23,7 @@ const StoreIntro = (props: Props) => {
     const classes = useStyles();
 
     const store = props.store;
-    const imageUrls = store.imageSmall;
+    const imageUrls = store.googleImages;
     const DOMPurify = createDOMPurify()
     return (
         <Box mt={2}>
