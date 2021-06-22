@@ -19,7 +19,8 @@ const useStyles = makeStyles(() => ({
             margin: "45px auto 0 auto",
         },
         card: {
-            margin: 30
+            width: 310,
+            margin: 20
         },
         moreBtn: {
             marginLeft: 'auto'
