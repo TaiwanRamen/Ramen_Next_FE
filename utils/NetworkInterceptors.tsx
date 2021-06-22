@@ -16,15 +16,14 @@ const NetworkInterceptors = ({children}) => {
             const message = error?.response?.data?.message;
             switch (error.response.status) {
                 case 401:
-                    console.log("401!!!")
-                    // setUser(null);
-                    // window.localStorage.removeItem("current_user");
-                    // await nookies.set({}, 'access_token', '', {
-                    //     maxAge: -1,
-                    //     path: '/',
-                    //     secure: process.env.NODE_ENV === 'production',
-                    // })
-                    // await router.push("/login");
+                    setUser(null);
+                    window.localStorage.removeItem("current_user");
+                    await nookies.set({}, 'access_token', '', {
+                        maxAge: -1,
+                        path: '/',
+                        secure: process.env.NODE_ENV === 'production',
+                    })
+                    await router.push("/login");
                     break;
                 case 403:
                     break;

@@ -62,7 +62,6 @@ const EditReviewModal = (props: Props) => {
             return;
         }
         let review = window.localStorage.getItem(storageKey);
-        console.log(review)
         if (review === null || review === "<p><br></p>") {
             showSnackBar(`評論不可為空！`, 'error');
             return;

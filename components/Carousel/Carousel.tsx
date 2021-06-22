@@ -17,7 +17,6 @@ const useStyles = makeStyles(() => ({
 }))
 
 const CarouselImage = (props: Props) => {
-        console.log(props.imageUrls)
         const imageUrls = (props.imageUrls) ? props.imageUrls : ['/image-not-found.png'];
         const classes = useStyles();
 
