@@ -70,7 +70,7 @@ const StoreRightCol = (props: Props) => {
     const setCurrentTabNum = props.setCurrentTabNum;
     const classes = useStyles();
     const store = props.data.store;
-    const reviewLength = store.storeRelations?.reviews.length;
+    const reviewLength = store.storeRelations?.reviews.length || 0;
     const storeId = store._id;
     const storeRating = (store.rating ? store.rating : 0).toFixed(1);
     const {user} = useUser()!;

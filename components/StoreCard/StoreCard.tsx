@@ -103,6 +103,9 @@ const StoreCard = (props: Props) => {
     const {user} = useUser()!;
     const router = useRouter();
     const rating = store.rating ? store.rating.toFixed(1) : "無評分";
+    // const storeImage = store.googleImages[0] || "./image-not-found.png"
+    const storeImage = (store.googleImages && store.googleImages.length !== 0) ? store.googleImages[0] : "/image-not-found.png"
+
 
     const descriptionHTMLTrimmer = (descriptionHTML: string) => {
         const DOMPurify = createDOMPurify()
@@ -121,7 +124,7 @@ const StoreCard = (props: Props) => {
             <Card elevation={0} className={classes.root} id={store._id} key={store._id}>
                 <CardMedia
                     className={classes.cardMedia}
-                    image={store.googleImages![0]}
+                    image={storeImage}
                 >
                     {user && <FollowBtn store={store}/>}
                 </CardMedia>
