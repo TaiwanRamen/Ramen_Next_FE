@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
         width: "200px",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        zIndex:600,
+        zIndex:650,
         "&:hover":{
             backgroundColor:"#f8f8f8",
         }
