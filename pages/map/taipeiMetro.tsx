@@ -1,14 +1,17 @@
 import React from "react";
 import {useState, useRef, useLayoutEffect, useEffect,} from "react";
+
 React.useLayoutEffect = React.useEffect
 import dynamic from 'next/dynamic';
-const ImageMapper = dynamic(() => import("react-img-mapper"), { ssr: false });
+
+const ImageMapper = dynamic(() => import("react-img-mapper"), {ssr: false});
 import MapAreas from '../../components/MetroMap/TaipeiMetroMapAreas'
 import {makeStyles, Theme} from "@material-ui/core/styles";
 import Loading from "../../components/Loading/Loading";
 import MetroMapPopper from "../../components/MetroMap/MetroMapPopper";
 import MetroSideDrawer from "../../components/MetroMap/MetroSideDrawer";
 import withAuth from "../../HOC/withAuth";
+import {Box, Typography} from "@material-ui/core";
 
 
 const imageWidth = 960;
@@ -60,6 +63,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         typography: {
             padding: theme.spacing(2),
         },
+        title: {
+            textAlign: "center"
+        }
     }),
 );
 
@@ -112,7 +118,17 @@ const TaipeiMetro = () => {
     };
 
     return (
-        <div className="grid" style={{border: "2px #FFAC55 solid"}}>
+        <Box>
+            <Box mb={2} className={classes.title}>
+                <Box mb={0.5}>
+                    <Typography variant="h4" >
+                        台北捷運地圖
+                    </Typography>
+                </Box>
+                <Typography variant="body1" color="textSecondary" >
+                    請點擊捷運站點查詢附近店家
+                </Typography>
+            </Box>
             {isLoading && <Loading/>}
             <div id="bird"
                  style={{position: 'absolute', left: popoverPosition.left, top: popoverPosition.top - 40, zIndex: 9999}}
@@ -144,7 +160,7 @@ const TaipeiMetro = () => {
                              stationCode={stationCode}
                              toggleDrawerOpen={toggleDrawerOpen}
             />
-        </div>
+        </Box>
     );
 
 };

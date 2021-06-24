@@ -9,7 +9,6 @@ import StoreRightCol from "../../../components/Store/StoreRightCol";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import {StoreProvider} from "../../../context/StoreContext";
 import withAuth from "../../../HOC/withAuth";
-
 type StoreResponse = {
     isStoreOwner: boolean,
     store: IStore
@@ -54,4 +53,4 @@ const Store = () => {
         : null;
 };
 
-export default (Store);
+export default withAuth(Store);

@@ -7,12 +7,10 @@ import {IStore} from "../../types/IStore";
 import React, {useState} from "react";
 import Paper from "@material-ui/core/Paper";
 import {Tab, Tabs} from "@material-ui/core";
-// import OpeningHours from "./OpeningHours";
 import Typography from "@material-ui/core/Typography";
 import {useRouter} from "next/router";
 import CloseToMetro from "../CloseToMetro/CloseToMetro";
-import {useStore} from "../../context/StoreContext";
-// import OpeningHours from "./OpeningHours";
+import OpeningHours from "./OpeningHours";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -82,6 +80,7 @@ const StoreLeftCol = (props: Props) => {
     const store = props.store;
     const lng = store?.location?.coordinates[0];
     const lat = store?.location?.coordinates[1];
+    const openPeriod = store?.openPeriod;
     const defaultViewport = {latitude: lat, longitude: lng, zoom: 12};
     const [viewport, setViewport] = useState<any>(defaultViewport);
 
@@ -141,8 +140,8 @@ const StoreLeftCol = (props: Props) => {
                 </Typography>
             </Box>
 
-            {/*TODO*/}
-            {/*<OpeningHours/>*/}
+            {openPeriod &&<OpeningHours openPeriod={openPeriod}/>}
+
             <Box mt={2}>
                 <CloseToMetro storeId={store._id}/>
             </Box>

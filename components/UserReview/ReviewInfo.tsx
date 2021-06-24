@@ -8,8 +8,27 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import he from "he";
 import * as React from "react";
 import {useRouter} from "next/router";
+import {Paper} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
+    paper:{
+        width: "100%",
+        backgroundColor: "#fafafa",
+        boxShadow: "1px 1px 3px 1px rgba(0, 0, 0, 0.2)",
+        borderRadius: 5,
+        padding: 20,
+        paddingTop: 0,
+        "&::before": {
+            content: '""',
+            position: "relative",
+            top: -30,
+            width: 0,
+            height: 0,
+            borderLeft: "10px solid transparent",
+            borderRight: "10px solid transparent",
+            borderBottom: "10px solid #efefef",
+        },
+    },
     selection: {
         fontFamily: "JFOpen",
         fontSize: "1rem",
@@ -22,9 +41,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     reviewText: {
         "& > div.ql-editor": {
+            cursor: "pointer",
             fontSize: "1rem",
         },
         "& > div.ql-tooltip": {
+            display: "none",
+            height: 0
+        },
+        "& > div.ql-clipboard": {
+            display: "none",
             height: 0
         },
         "&:hover": {
@@ -60,13 +85,15 @@ const ReviewInfo = (props: Props) => {
 
     return data?.review ? (
         <ListItem className={classes.selection} button onClick={() => router.push(`/stores/${storeId}`)}>
-            <ReactQuill
-                value={he.decode(data.review.text)}
-                readOnly={true}
-                theme={"bubble"}
-            >
-                <div className={classes.reviewText}/>
-            </ReactQuill>
+            <Paper className={classes.paper}>
+                <ReactQuill
+                    value={he.decode(data.review.text)}
+                    readOnly={true}
+                    theme={"bubble"}
+                >
+                    <div className={classes.reviewText}/>
+                </ReactQuill>
+            </Paper>
         </ListItem>
     ) : null;
 };

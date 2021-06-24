@@ -4,9 +4,6 @@ import {makeStyles, Theme} from "@material-ui/core/styles";
 import cx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) => ({
-    tag: {
-        backgroundColor: "#ffb400",
-    },
     logoIcon: {
         marginLeft: 4,
         marginRight: 4,

@@ -7,9 +7,6 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import SearchBar from "../../components/SearchBar/SearchBar";
 import StoreCardList from "../../components/StoreCard/StoreCardList";
 import CustomPagination from "../../components/CustomerPagination/CustomPagination";
-import {QueryClient} from "react-query";
-import {dehydrate} from "react-query/hydration";
-import axios from "axios";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import withAuth from "../../HOC/withAuth";
 

@@ -6,7 +6,8 @@ import {useUser} from "../../context/UserContext";
 import {makeStyles, Theme} from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
 import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });import he from 'he';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import he from 'he';
 import ReviewDropdown from "./ReviewDrowdown";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -22,8 +23,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     paper: {
         marginTop: 15,
-        backgroundColor: "#f8f6f6",
-        boxShadow: "2px 2px 5px 1px rgba(0, 0, 0, 0.2)",
+        backgroundColor: "#fafafa",
+        boxShadow: "1px 1px 3px 1px rgba(0, 0, 0, 0.2)",
         borderRadius: 5,
         padding: 20,
         paddingTop: 0,
@@ -48,6 +49,11 @@ const useStyles = makeStyles((theme: Theme) => ({
             fontSize: "1rem",
         },
         "& > div.ql-tooltip": {
+            display: "none",
+            height: 0
+        },
+        "& > div.ql-clipboard": {
+            display: "none",
             height: 0
         }
     }

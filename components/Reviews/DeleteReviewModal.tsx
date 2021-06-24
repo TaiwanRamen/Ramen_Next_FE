@@ -9,7 +9,8 @@ import useDelete from "../../customHooks/UseDelete";
 import useStackedSnackBar from "../../customHooks/UseStackedSnackBar";
 import he from "he";
 import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });import {IReview} from "../../types/IReview";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import {IReview} from "../../types/IReview";
 import {useRouter} from "next/router";
 
 

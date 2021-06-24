@@ -94,7 +94,7 @@ const Notification = () => {
         {
             data.notifications.length > 0 ? data.notifications.map((notification: INotification) => {
                 return <NotificationStrip notification={notification}/>
-            }) : <p className={classes.text}>沒有追蹤清單</p>
+            }) : <p className={classes.text}>沒有通知</p>
         }
         <CustomPagination pages={data.pages} page={page} handlePageChange={handlePageChange}/>
     </Box> : null

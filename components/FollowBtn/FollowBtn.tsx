@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
         margin: 10,
         backgroundColor: "white",
         "&:hover": {
+            fontSize:"2rem",
             backgroundColor: "#efefef",
             boxShadow: '0 3px 7px 2px rgba(0,0,0,0.1)'
 

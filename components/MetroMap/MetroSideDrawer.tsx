@@ -4,7 +4,8 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from "@material-ui/core/Typography";
 import DrawerContent from "./DrawerContent";
-import {Box} from "@material-ui/core";
+import {Box, Divider} from "@material-ui/core";
+import * as React from "react";
 
 const drawerWidth = 350;
 
@@ -44,6 +45,10 @@ const useStyles = (props: Props) => makeStyles((theme: Theme) => ({
         alignItems: 'center',
         color: theme.palette.text.secondary,
     },
+    divider: {
+        height: 28,
+        margin: 8,
+    },
 
 
 }));
@@ -76,15 +81,15 @@ const MetroSideDrawer = (props: Props) => {
                 paper: classes.drawerPaper,
             }}
         >
-
-            <Box m={2} className={classes.headerRoot}>
-                <Typography gutterBottom variant="h5" className={classes.headerText}>
-                    {stationName}
+            <Box m={1} className={classes.headerRoot}>
+                <Typography gutterBottom variant="h6" className={classes.headerText}>
+                    {stationName} 站
                 </Typography>
                 <IconButton onClick={toggleDrawerOpen} className={classes.closeButton}>
                     <CloseIcon/>
                 </IconButton>
             </Box>
+            <Divider className={classes.divider} orientation="horizontal"/>
             {isDrawerOpen &&
             <div className={classes.cardRoot}>
                 <DrawerContent stationCode={stationCode} city={city}/>

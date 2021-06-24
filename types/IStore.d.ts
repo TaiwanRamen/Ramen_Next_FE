@@ -13,22 +13,16 @@ export interface IStore {
     tags: string[],
     phoneNumber: "",
     openPeriod: [{
-        close: {
-            day: {type: number},
-            time: {type: string},
-        },
-        open: {
-            day: {type: number},
-            time: {type: string},
-        }
+        period: [{
+            open: string,
+            close: string
+        }]
     }],
-    openPeriodText: [{
-        type: string
-    }],
-    googleUrl: {type: string},
-    storeUrl: {type: string}
+    openPeriodText: string,
+    googleUrl: string,
+    storeUrl: string,
     __v: number,
-    storeRelations?:{
+    storeRelations?: {
         author: string,
         comments: string[]
         followers: string[]

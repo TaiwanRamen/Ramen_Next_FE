@@ -47,9 +47,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     content: {
         position: 'relative',
         padding: 24,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderRadius: 4,
         height: 350,
+        "&:hover": {
+            backgroundColor: "#fcfcfc",
+            cursor: "pointer",
+        }
     },
     locationIcon: {
         marginLeft: 0,
@@ -128,9 +132,7 @@ const StoreCard = (props: Props) => {
                 >
                     {user && <FollowBtn store={store}/>}
                 </CardMedia>
-
-                <CardContent className={cx(classes.fadeShadow, classes.content)}>
-
+                <CardContent className={cx(classes.fadeShadow, classes.content)} onClick={()=>router.push(`/stores/${store._id}`)}>
 
                     <h4 className={classes.title}>{store.name}</h4>
 
