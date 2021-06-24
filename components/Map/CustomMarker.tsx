@@ -2,22 +2,22 @@ import {Marker} from "react-map-gl";
 import {makeStyles} from "@material-ui/core/styles";
 import {IStore} from "../../types/IStore";
 
-
-const useStyles = makeStyles( () => ({
+const iconSize = 40;
+const useStyles = makeStyles(() => ({
     marker: {
-        backgroundImage: `url(/ramen.svg)`,
+        transform: `translate(${-iconSize / 2}px,${-iconSize}px)`,
         backgroundSize: "cover",
-        width: "45px",
-        height: "45px",
+        width: iconSize,
+        height: iconSize,
         borderRadius: "50%",
         cursor: "pointer",
-        zIndex:600
+        zIndex: 600
     },
 }))
 
 type Props = {
-    index:number,
-    store:IStore,
+    index: number,
+    store: IStore,
     openPopup: Function,
     flyTo: Function
 }
@@ -34,13 +34,19 @@ const CustomMarker = (props: Props) => {
     const handleMarkerClick = () => {
         flyTo(lng, lat);
         openPopup(index);
-
     }
     return (
+
         <Marker
-            longitude={lng}
-            latitude={lat}>
-            <div className={classes.marker} onClick={handleMarkerClick}>
+            latitude={lat}
+            longitude={lng}>
+            <div  style={{transform: `translate(${-iconSize / 2}px,${-iconSize}px)`}}
+                 onClick={handleMarkerClick}>
+                <img
+                    className={classes.marker}
+                    src={'/ramen.svg'}
+                    alt="icon"
+                />
             </div>
         </Marker>
     )

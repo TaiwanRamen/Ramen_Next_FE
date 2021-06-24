@@ -4,15 +4,13 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Button} from "@material-ui/core";
 import {useRouter} from "next/router";
 
-const markerSize = 45;
+const markerSize = 40;
 const useStyles = makeStyles(() => ({
     popup: {
-        maxWidth:250,
-        padding:10
+        maxWidth: 250,
+        padding: 10
     },
-    storeName:{
-
-    }
+    storeName: {}
 }));
 
 
@@ -33,12 +31,13 @@ const CustomPopup = (props: Props) => {
             latitude={store?.location?.coordinates[1]}
             onClose={closePopup}
             closeButton={false}
-            offsetLeft={markerSize / 2}
+            offsetLeft={-markerSize / 2}
+            offsetTop={-1.5 * markerSize}
             closeOnClick={false}
             className={classes.popup}
         >
 
-            <Button className={classes.storeName} onClick={()=>router.push(`/stores/${store._id}`)}>
+            <Button className={classes.storeName} onClick={() => router.push(`/stores/${store._id}`)}>
                 {store.name}
             </Button>
         </Popup>

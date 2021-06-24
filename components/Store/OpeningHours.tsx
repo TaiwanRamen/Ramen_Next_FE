@@ -55,7 +55,6 @@ type Props = {
 const OpeningHours = (props: Props) => {
         const classes = useStyles();
         const openPeriod = props.openPeriod
-        console.log(openPeriod);
         let days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 
         function createData(day: string, period: Period[]) {

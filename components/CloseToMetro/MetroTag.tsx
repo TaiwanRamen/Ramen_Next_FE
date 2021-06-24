@@ -74,7 +74,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     1: {
         background: "#8EC31C",
         color: "white",
-    }
+    },
+    A: {
+        background: "#960A94",
+        color: "white",
+    },
 
 }))
 type Props = {

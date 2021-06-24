@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         storeModal: {
             margin: 16,
             position:"relative",
-            zIndex: 500,
+            zIndex: 650,
             justifyContent:"left"
         },
         modalRoot: {

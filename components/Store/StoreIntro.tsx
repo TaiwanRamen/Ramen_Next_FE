@@ -22,7 +22,6 @@ type Props = {
 const StoreIntro = (props: Props) => {
     const classes = useStyles();
 
-    console.log(props.store)
     const store = props.store;
     const imageUrls = store.googleImages;
     const DOMPurify = createDOMPurify()
